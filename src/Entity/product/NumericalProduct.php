@@ -42,13 +42,13 @@ class NumericalProduct extends Product {
      * @param float $fileSize Size of the file to download
      * @param string $fileFormat type of file to download
      */
-    public function __construct(?int $id, string $name, string $description, float $price, int $quantity, string $downloadLink, float $fileSize, string $fileFormat) {
+    public function __construct(?int $id, string $name, string $description, float $price, int $quantity, float $fileSize, string $fileFormat) {
         $this->id = $id;
         $this->name = $name;
         $this->description = $description;
         $this->price = $price;
         $this->quantity = $quantity;
-        $this->downloadLink = $downloadLink;
+        $this->downloadLink = $this->generateDownloadLink();
         $this->fileSize = $fileSize;
         $this->fileFormat = $fileFormat;
     }
@@ -171,7 +171,17 @@ class NumericalProduct extends Product {
     }
     public function showDetails(): array
     {
-        return ['id' => $this->getId(), 'name' => $this->getName(), 'description' => $this->getDescription(), "price" => $this->getPrice(), "quantity" => $this->getQuantity(), "downloadLink" => $this->getDownloadLink(), "fileSize" => $this->getFileSize(), "fileFormat" => $this->getFileFormat()];
+        return [
+        'id' => $this->getId(), 
+        'name' => $this->getName(), 
+        'description' => $this->getDescription(), 
+        'price' => $this->getPrice(), 
+        'quantity' => $this->getQuantity(),
+        'downloadLink' => $this->getDownloadLink(), 
+         'fileSize' => $this->getFileSize(), 
+         'fileFormat' => $this->getFileFormat(), 
+         'PriceTaxInc' => $this->calculatePriceTaxInclude(), 
+         'inStock' => $this->checkStock()];
     }
 
     /**
@@ -183,9 +193,9 @@ class NumericalProduct extends Product {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $url = 'http://';
         for ($i= 0; $i < 15; $i++){
-            $url .= $characters[rand(0, strlen($characters))];
+            $url .= $characters[rand(0, strlen($characters) - 1)];
         }
-        return $url;
+        return $url .= ".com";
     }
 
 

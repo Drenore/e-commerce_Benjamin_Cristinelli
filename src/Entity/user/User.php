@@ -1,68 +1,65 @@
-<?php 
+<?php
 
 /**
  * Class User
  * 
- * Represents a user with an id, name, email, password, and registration date.
- * Provides methods to get and set user properties, including validation for email and password.
+ * Abstract class representing a user with common properties such as ID, name, email, and password.
+ * Provides methods for validating and managing user data.
  */
-class User {
+abstract class User {
 
     /**
      * @var int|null The user ID
      */
-    private ?int $id;
+    protected ?int $id;
 
     /**
      * @var string The user's name
      */
-    private string $name;
+    protected string $name;
 
     /**
      * @var string The user's email address
      */
-    private string $email;
+    protected string $email;
 
     /**
      * @var string The user's password
      */
-    private string $password;
+    protected string $password;
 
     /**
      * @var DateTime The user's registration date
      */
-    private DateTime $registerDate;
+    protected DateTime $registerDate;
 
-    /**
-     * User constructor.
-     * 
+   /**
+     * Constructor for the User class.
+     *
      * @param string $name The user's name
      * @param string $email The user's email address
      * @param string $password The user's password
      */
     public function __construct(string $name, string $email, string $password) {
-        $this->setName($name);
-        $this->setEmail($email);
-        $this->setPassword($password);
+        $this->name = $name;
+        $this->email = $email;
+        $this->password = $password;
+        $this->registerDate = new DateTime(); // Automatically set the registration date to the current date
     }
 
     /**
-     * Gets the user's ID.
+     * Abstract method to get the user ID.
      * 
      * @return int The user ID
      */
-    public function getId(): int {
-        return $this->id;
-    }
+    abstract public function getId(): int;
 
     /**
-     * Sets the user's ID.
+     * Abstract method to set the user ID.
      * 
      * @param int $id The user ID
      */
-    public function setId(int $id): void {
-        $this->id = $id;
-    }
+    abstract public function setId(int $id): void;
 
     /**
      * Gets the user's name.
@@ -155,10 +152,7 @@ class User {
      * @return bool True if the passwords match, false otherwise
      */
     public function passwordVerify(string $password): bool {
-        if ($this->password != $password) {
-            return false;
-        }
-        return true;
+        return $this->password === $password;
     }
 
     /**
@@ -174,3 +168,4 @@ class User {
         $this->setPassword($password);
     }
 }
+?>

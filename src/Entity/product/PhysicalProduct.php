@@ -108,8 +108,8 @@ class PhysicalProduct extends Product {
      *
      * @return float
      */
-    public function getWeight(): float {
-        return $this->weight + 'kg';
+    public function getWeight(): string {
+        return $this->weight . 'kg';
     }
     /**
      * Set the class value of weight for this physical product
@@ -127,8 +127,8 @@ class PhysicalProduct extends Product {
      * @return float
      */
 
-    public function getLength(): float {
-        return $this->length + "cm";
+    public function getLength(): string {
+        return $this->length . "cm";
     }
     /**
      * set length for the physical product
@@ -146,8 +146,8 @@ class PhysicalProduct extends Product {
      *
      * @return float
      */
-    public function getWidth(): float {
-        return $this->width + "cm";;
+    public function getWidth(): string {
+        return $this->width . "cm";
     }
     
     /**
@@ -166,8 +166,8 @@ class PhysicalProduct extends Product {
      *
      * @return float
      */
-    public function getHeight(): float {
-        return $this->height + "cm";;
+    public function getHeight(): string {
+        return $this->height . "cm";;
     }
     /**
      * Set the height
@@ -188,16 +188,30 @@ class PhysicalProduct extends Product {
         return $this->quantity > 0;
     }
 
-    public function calculateDeliveryTax(): float{
-        if($this->weight > 10){
+    public function calculateDeliveryTax(): float {
+        if ($this->weight >= 10) {
             return 4.99;
+        } elseif ($this->weight >= 5) {
+            return 3.99;
+        } else {
+            return 2.99;
         }
-        return 2.99;
     }
-
+    
     public function showDetails(): array
     {
-        return ['id' => $this->getId(), 'name' => $this->getName(), 'description' => $this->getDescription(), "price" => $this->getPrice(), "quantity" => $this->getQuantity(), "weight" => $this->getWeight(), "length" => $this->getLength(), "witdh" => $this->getWidth(), "height" => $this->getHeight()];
+        return ['id' => $this->getId(), 
+        'name' => $this->getName(), 
+        'description' => $this->getDescription(),
+         "priceTaxExc" => $this->getPrice(), 
+         "quantity" => $this->getQuantity(),
+          "weight" => $this->getWeight(), 
+          "length" => $this->getLength(), 
+          "witdh" => $this->getWidth(), 
+          "height" => $this->getHeight(), 
+          "PriceTaxInc" => $this->calculatePriceTaxInclude(), 
+          "inStock" => $this->checkStock(), 
+          "deliveryTax" => $this->calculateDeliveryTax()];
     }
 
     /**
