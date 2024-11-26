@@ -1,6 +1,6 @@
 <?php 
 
-include "../src/Entity/Product.php";
+include "../src/Entity/product/Product.php";
 include "../src/Entity/User.php";
 
 $product = new Product("Laptop", "High-performance laptop for professionals.", 999.99, 10);
