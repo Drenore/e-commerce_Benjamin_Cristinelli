@@ -1,6 +1,8 @@
 <?php
 
-require_once '../product/Product.php'; // Ensure that the Product class is included
+namespace Flowup\ECommerce\Entity;
+
+use Flowup\ECommerce\Entity\Product\Product;
 
 class Category {
 

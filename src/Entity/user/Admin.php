@@ -1,6 +1,8 @@
 <?php
 
-require_once "User.php";  // Since both Admin.php and User.php are in the same folder
+namespace Flowup\ECommerce\Entity\User;
+
+use DateTime;
 
 
 /**

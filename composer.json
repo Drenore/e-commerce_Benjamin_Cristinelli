@@ -1,0 +1,16 @@
+{
+    "name": "flowup/e-commerce",
+    "description": "School project to start with poo",
+    "autoload": {
+        "psr-4": {
+            "Flowup\\ECommerce\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Drenore",
+            "email": "benjamin.cristinelli1@gmail.com"
+        }
+    ],
+    "require": {}
+}

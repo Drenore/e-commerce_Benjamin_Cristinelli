@@ -1,7 +1,9 @@
 <?php
 
-require_once "User.php";  // Since both Admin.php and User.php are in the same folder
-include_once "C:/wamp64/www/e-commerce/src/Entity/cart/Cart.php";
+namespace Flowup\ECommerce\Entity\User;
+
+
+use Flowup\ECommerce\Entity\Cart;
 
 /**
  * Class Customer

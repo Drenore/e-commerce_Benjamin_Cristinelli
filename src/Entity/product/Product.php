@@ -1,4 +1,8 @@
-<?php
+<?php 
+
+namespace Flowup\ECommerce\Entity\Product;
+
+use Flowup\ECommerce\Config\ConfigurationManager;
 
 /**
  * Class Product
@@ -103,12 +107,23 @@ abstract class Product {
      */
     public abstract function setQuantity(int $quantity): void;
 
+    protected function getTaxRate(): float
+    {
+        $config = ConfigurationManager::getInstance();
+        return (float) $config->get('VAT');
+    }
+
     /**
      * Calculates the product price including tax.
      * 
      * @return float The product price including tax
      */
-    public abstract function calculatePriceTaxInclude(): float;
+    public function calculatePriceTaxInclude(): float
+    {   
+        $taxRate = $this->getTaxRate();
+        return $this->price * (1 + $taxRate);
+    }
+
 
     /**
      * Checks if the stock is sufficient.

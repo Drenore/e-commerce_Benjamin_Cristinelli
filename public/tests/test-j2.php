@@ -1,13 +1,16 @@
 <?php 
 
+require '../../vendor/autoload.php';
 
-include "../../src/Entity/product/PhysicalProduct.php";
-include "../../src/Entity/product/NumericalProduct.php";
-include "../../src/Entity/product/PerishableProduct.php";
-include "../../src/Entity/cart/Cart.php";
-include "../../src/Entity/user/Admin.php";
-include "../../src/Entity/user/Seller.php";
-include "../../src/Entity/user/Customer.php";
+
+use Flowup\ECommerce\Entity\Cart;
+use Flowup\ECommerce\Entity\User\Admin;
+use Flowup\ECommerce\Entity\User\Seller;
+use Flowup\ECommerce\Entity\User\Customer;
+use Flowup\ECommerce\Entity\Product\PhysicalProduct;
+use Flowup\ECommerce\Entity\Product\NumericalProduct;
+use Flowup\ECommerce\Entity\Product\PerishableProduct;
+
 
 /**
  * Creating différent product to see if they all working and then show details of all 

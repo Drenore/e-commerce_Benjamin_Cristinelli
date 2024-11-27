@@ -1,6 +1,8 @@
 <?php
 
-require_once __DIR__ . '/../product/Product.php'; 
+namespace Flowup\ECommerce\Entity;
+use DateTime;
+use Flowup\ECommerce\Entity\Product\Product;
 
 
 class Cart {

@@ -1,6 +1,9 @@
 <?php
 
-require_once 'Product.php';
+namespace Flowup\ECommerce\Entity\Product;
+
+use DateTime;
+
 
 /**
  * Class PerishableProduct
@@ -32,6 +35,7 @@ class PerishableProduct extends Product {
      * @param float $price The product price (excluding tax)
      * @param int $quantity The available quantity of the perishable product
      * @param string $expirationDate The expiration date of the product (in 'YYYY-MM-DD' format)
+     * @param float $sotrageTemperature condition of temperature to store the perishable product
      */
     public function __construct(?int $id, string $name, string $description, float $price, int $quantity, string $expirationDate, float  $storageTemperature) {
         $this->id = $id;
@@ -125,9 +129,6 @@ class PerishableProduct extends Product {
         $this->storageTemperature =  $storageTemperature;
     }
 
-    public function calculatePriceTaxInclude(): float {
-        return $this->price * 1.20;
-    }
 
     public function checkStock(): bool {
         return $this->quantity > 0;

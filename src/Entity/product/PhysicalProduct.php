@@ -1,6 +1,8 @@
 <?php
 
-require_once 'Product.php';
+namespace Flowup\ECommerce\Entity\Product;
+
+use InvalidArgumentException;
 
 /**
  * Class ProduitPhysique
@@ -50,7 +52,7 @@ class PhysicalProduct extends Product {
         $this->id = $id;
         $this->name = $name;
         $this->description = $description;
-        $this->price = $price;
+        $this->setPrice($price);
         $this->quantity = $quantity;
         $this->weight = $weight;
         $this->length = $length;
@@ -177,11 +179,6 @@ class PhysicalProduct extends Product {
      */
     public function setHeight(float $height): void {
         $this->height = $height;
-    }
-
-
-    public function calculatePriceTaxInclude(): float {
-        return $this->price * 1.20; // Adds 20% tax
     }
 
     public function checkStock(): bool {

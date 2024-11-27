@@ -1,5 +1,9 @@
 <?php
 
+namespace Flowup\ECommerce\Entity\User;
+
+use DateTime;
+
 /**
  * Class User
  * 

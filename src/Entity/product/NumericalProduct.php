@@ -1,6 +1,9 @@
 <?php
 
-require_once 'Product.php';
+namespace Flowup\ECommerce\Entity\Product;
+
+use InvalidArgumentException;
+
 
 /**
  * Class NumericalProduct
@@ -155,11 +158,6 @@ class NumericalProduct extends Product {
      */
     public function setFileFormat(string $fileFormat): void {
         $this->fileFormat = $fileFormat;
-    }
-
-
-    public function calculatePriceTaxInclude(): float {
-        return $this->price * 1.20;
     }
 
     public function checkStock(): bool {

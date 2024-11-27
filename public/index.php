@@ -1,5 +1,8 @@
 <?php 
 
+require __DIR__ . '/vendor/autoload.php';
+
+
 include "../src/Entity/product/Product.php";
 include "../src/Entity/User.php";
 

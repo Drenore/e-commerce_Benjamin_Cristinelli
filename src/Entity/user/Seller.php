@@ -1,7 +1,7 @@
 <?php
 
-require_once "User.php";  // Since both Admin.php and User.php are in the same folder
-require_once "C:/wamp64/www/e-commerce/src/Entity/product/Product.php";
+namespace Flowup\ECommerce\Entity\User;
+use Flowup\ECommerce\Entity\Product\Product;
 
 /**
  * Class Seller
