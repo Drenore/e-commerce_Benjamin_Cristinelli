@@ -34,9 +34,9 @@ class Admin extends User {
      * @param int $accessLevel The access level of the admin
      * @param DateTime $lastConnection The last time the admin logged in
      */
-    public function __construct(string $name, string $email, string $password, int $accessLevel, DateTime $lastConnection) {
+    public function __construct(?int $id, string $name, string $email, string $password, int $accessLevel, DateTime $lastConnection) {
         // Call the parent constructor with the name, email, and password parameters
-        parent::__construct($name, $email, $password);
+        parent::__construct($id, $name, $email, $password);
 
         // Initialize the additional properties for Admin
         $this->accessLevel = $accessLevel;
@@ -93,7 +93,7 @@ class Admin extends User {
      *
      * @param DateTime $lastConnection The new last connection time
      */
-    public function setLastConnection(DateTime $lastConnection): void {
+    public function setLastConnection(DateTime $lastConnection = new DateTime()): void {
         $this->lastConnection = $lastConnection;
     }
 

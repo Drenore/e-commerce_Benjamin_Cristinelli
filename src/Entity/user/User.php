@@ -3,6 +3,7 @@
 namespace Flowup\ECommerce\Entity\User;
 
 use DateTime;
+use InvalidArgumentException;
 
 /**
  * Class User
@@ -44,7 +45,8 @@ abstract class User {
      * @param string $email The user's email address
      * @param string $password The user's password
      */
-    public function __construct(string $name, string $email, string $password) {
+    public function __construct(?int $id, string $name, string $email, string $password) {
+        $this->id = $id;
         $this->name = $name;
         $this->email = $email;
         $this->password = $password;

@@ -18,11 +18,11 @@ class ProductFactory {
          * @param $type string of type of product
          */
         switch($type){
-            case "Perishable product":
+            case "perishableproduct":
                 return self::createPerishProduct($params);
-            case "Physical product":
+            case "physicalproduct":
                 return self::createPhysicalProduct($params);
-            case "Numerical product":
+            case "numericalproduct":
                return self::createNumericalProduct($params);
         }                     
     }

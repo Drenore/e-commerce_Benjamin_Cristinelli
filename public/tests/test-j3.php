@@ -4,6 +4,8 @@ require '../../vendor/autoload.php';
 
 use Flowup\ECommerce\Config\ConfigurationManager;
 use Flowup\ECommerce\Factory\ProductFactory;
+use Flowup\ECommerce\Database\DatabaseConnection;
+use Flowup\ECommerce\Repository\ProductRepository;
 
 $productFactory = new ProductFactory();
 
@@ -55,9 +57,14 @@ foreach ($perishableProduct->showDetails() as $key => $detail) {
 echo "<br/>";
 echo "<br/>";
 
-$config = ConfigurationManager::getInstance();
-print_r($config->getAll());
+$configuration = ConfigurationManager::getInstance();
+print_r($configuration->getAll());
 echo "<br/>";
 echo "<br/>";
-$config->set('contactEmail', 'jesuistropfort@samarche.com');
-print_r($config->getAll());
+$configuration->set('contactEmail', 'jesuistropfort@samarche.com');
+print_r($configuration->getAll());
+
+
+$db = DatabaseConnection::getInstance();
+
+
